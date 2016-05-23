@@ -12,12 +12,16 @@ var texture3 = PIXI.Texture.fromImage("assets/sillyfaceyellow.png");
 
 //add score board showing in the scene
 var score = 0;
-var scoreboard = new PIXI.Text("your score:" + score);
-scoreboard.position.x = 220;
+var scoreboard = new PIXI.Text("Score:" + score);
+scoreboard.position.x = 280;
 scoreboard.position.y = 0;
 stage.addChild(scoreboard);
 
-
+var times = 60;
+var time = new PIXI.Text("Time:" + times);
+time.position.x = 280;
+time.position.y = 30;
+stage.addChild(time);
 
 var sprite1 = new PIXI.Sprite(texture1);
 
@@ -54,7 +58,7 @@ function mouseHandler1(e) {
     createjs.Tween.get(sprite1.position).to({x: new_x1, y: new_y1}, 1000, 
     createjs.Ease.bounceOut);
     score++;
-    scoreboard.setText("your score: " + score);
+    scoreboard.setText("Score:" + score);
 }
 
 function mouseHandler2(e) {
@@ -63,7 +67,7 @@ function mouseHandler2(e) {
     createjs.Tween.get(sprite2.position).to({x: new_x2, y: new_y2}, 1000, 
     createjs.Ease.bounceOut);
     score -= 2 ;
-    scoreboard.setText("your score: " + score);
+    scoreboard.setText("Score:" + score);
 }
 
 function mouseHandler3(e) {
@@ -72,7 +76,7 @@ function mouseHandler3(e) {
     createjs.Tween.get(sprite3.position).to({x: new_x3, y: new_y3}, 1000, 
     createjs.Ease.bounceOut);
     score++;
-    scoreboard.setText("your score: " + score);
+    scoreboard.setText("Score:" + score);
 }
 
 sprite1.interactive = true;
@@ -84,15 +88,30 @@ sprite3.on('mousedown', mouseHandler3);
 
 
 
+function countdown() {
+    var times = 60;
+    function tick() {
+        times--;
+        time.setText("Time:" + times);
+        time.innerHTML = "0:" + (times < 10 ? "0" : "") + String(times);
+        if( times > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+           
+            alert("game over! your final score is: " + score);
+        }
+    }
+    tick();
+}
 
+countdown();
 
 function animate() {
     requestAnimationFrame(animate);
     sprite1.rotation += 0.1;
-    var new_x1 = Math.floor(Math.random() * 300) + 100;
-    var new_y1 = Math.floor(Math.random() * 300) + 100;
-    createjs.Tween.get(sprite1.position).to({x: new_x1, y: new_y1}, 0, 
-    createjs.Ease.bounceOut);
+    //var new_x1 = Math.floor(Math.random() * 300) + 100;
+    //var new_y1 = Math.floor(Math.random() * 300) + 100;
+    //createjs.Tween.get(sprite1.position).to({x: new_x1, y: new_y1}, 0, createjs.Ease.bounceOut);
     sprite2.rotation += 0.15;
     sprite3.rotation += 0.05;
     renderer.render(stage);
