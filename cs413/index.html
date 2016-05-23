@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Project 1 Touch the face!</title>
+    </head>
+    <body>
+        <h1>Game</h1>
+        <div id="counter">1:00</div>
+        <div id="gameport"></div>
+        
+        
+        <h1>Instructions</h1>
+        <p>you will get 1 point by clicking the yellow face and lose 2 points by clicking the red face</p>
+        <p>the total time is 60 seconds and you have 0 score at the beginning.</p>
+        <p>you will get your final score when the time is out.
+        
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+<script>
+
+(function() {
+
+var d = document, s = d.createElement('script');
+
+s.src = 'http://nau-cs413.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+
+(d.head || d.body).appendChild(s);
+
+})(); 
+
+</script>
+
+        
+        <script src="pixi.js"></script>
+        <script src="game.js"></script>
+    </body>
+</html>
