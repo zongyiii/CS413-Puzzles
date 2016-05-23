@@ -8,10 +8,15 @@ gameport.appendChild(renderer.view);
 var stage = new PIXI.Container();
 PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
 PIXI.loader
+  .add("Yisound.mp3")
   .add("assets2.json")
   .load(ready);
+
+var music;
   
 function ready() {
+    music = PIXI.audioManager.getAudio("coin.mp3");
+    music.play();
     var black = new PIXI.Sprite(PIXI.Texture.fromFrame("blackface.png"));
     black.scale.x = 2;
     black.scale.y = 2;
