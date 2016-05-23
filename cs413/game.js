@@ -1,5 +1,7 @@
 var gameport = document.getElementById("gameport");
 
+
+
 var renderer = PIXI.autoDetectRenderer(400, 400, {backgroundColor: 0x5566ee});
 gameport.appendChild(renderer.view);
 
@@ -10,7 +12,7 @@ var texture2 = PIXI.Texture.fromImage("assets/sillyfacered.png");
 var texture3 = PIXI.Texture.fromImage("assets/sillyfaceyellow.png");
 
 
-//add score board showing in the scene
+//add score board and time showing in the scene
 var score = 0;
 var scoreboard = new PIXI.Text("Score:" + score);
 scoreboard.position.x = 280;
@@ -104,7 +106,7 @@ function countdown() {
     tick();
 }
 
-countdown();
+
 
 function animate() {
     requestAnimationFrame(animate);
@@ -116,4 +118,8 @@ function animate() {
     sprite3.rotation += 0.05;
     renderer.render(stage);
 }
+
+
+
+countdown();
 animate();
