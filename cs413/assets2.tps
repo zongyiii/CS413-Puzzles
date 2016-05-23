@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.2.0</string>
         <key>fileName</key>
-        <string>/Users/e9/Downloads/Assets.tps</string>
+        <string>/Users/e9/Downloads/assets2.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -141,7 +141,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename></filename>
+                <filename>assets2.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -191,12 +191,10 @@
             <key type="filename">../CS413-Minimalism/cs413/assets/blackface.png</key>
             <key type="filename">../CS413-Minimalism/cs413/assets/cheeryellowface.png</key>
             <key type="filename">../CS413-Minimalism/cs413/assets/kissingyellowface.png</key>
-            <key type="filename">../CS413-Minimalism/cs413/assets/redface.png</key>
             <key type="filename">../CS413-Minimalism/cs413/assets/sillyfacered.png</key>
             <key type="filename">../CS413-Minimalism/cs413/assets/sillyfaceyellow.png</key>
             <key type="filename">../CS413-Minimalism/cs413/assets/smileyellowface.png</key>
             <key type="filename">../CS413-Minimalism/cs413/assets/trickfacered.png</key>
-            <key type="filename">../CS413-Minimalism/cs413/assets/yellowface.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -209,10 +207,8 @@
             <filename>../CS413-Minimalism/cs413/assets/kissingyellowface.png</filename>
             <filename>../CS413-Minimalism/cs413/assets/smileyellowface.png</filename>
             <filename>../CS413-Minimalism/cs413/assets/trickfacered.png</filename>
-            <filename>../CS413-Minimalism/cs413/assets/yellowface.png</filename>
             <filename>../CS413-Minimalism/cs413/assets/sillyfaceyellow.png</filename>
             <filename>../CS413-Minimalism/cs413/assets/sillyfacered.png</filename>
-            <filename>../CS413-Minimalism/cs413/assets/redface.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

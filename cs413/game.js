@@ -6,7 +6,34 @@ var renderer = PIXI.autoDetectRenderer(400, 400, {backgroundColor: 0x5566ee});
 gameport.appendChild(renderer.view);
 
 var stage = new PIXI.Container();
+PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
+PIXI.loader
+  .add("assets2.json")
+  .load(ready);
+  
+function ready() {
+    var black = new PIXI.Sprite(PIXI.Texture.fromFrame("blackface.png"));
+    black.scale.x = 2;
+    black.scale.y = 2;
+    black.position.x = 50;
+    black.position.y = 100;
+    stage.addChild(black);
+    
+    var frames = [];
+    frames.push(PIXI.Texture.fromFrame("cheeryellowface.png"));
+    frames.push(PIXI.Texture.fromFrame("kissingyellowface.png"));
+    frames.push(PIXI.Texture.fromFrame("sillyfaceyellow.png"));
+    frames.push(PIXI.Texture.fromFrame("smileyellowface.png"));
 
+    faces1 = new PIXI.extras.MovieClip(frames);
+    faces1.scale.x = 2;
+    faces1.scale.y = 2;
+    faces1.position.x = 200;
+    faces1.position.y = 100;
+    faces1.animationSpeed = 0.02;
+    faces1.play();
+    stage.addChild(faces1);
+}
 
 var play_screen = new PIXI.Container();
 stage.addChild(play_screen);
@@ -41,13 +68,13 @@ PlayButton.on('mousedown', changeView.bind(null, play_screen));
 PlayButton1.on('mousedown', changeView.bind(null, play_screen1));
 CreditButton.on('mousedown', changeView.bind(null, credit_screen));
 
-var texture1 = PIXI.Texture.fromImage("assets/sillyfaceyellow.png");
-var texture2 = PIXI.Texture.fromImage("assets/sillyfacered.png");
-var texture3 = PIXI.Texture.fromImage("assets/sillyfaceyellow.png");
+var texture1 = PIXI.Texture.fromImage("sillyfaceyellow.png");
+var texture2 = PIXI.Texture.fromImage("sillyfacered.png");
+var texture3 = PIXI.Texture.fromImage("sillyfaceyellow.png");
 
 
-play_screen.visible = false;
-play_screen.interactive = false;
+//play_screen.visible = false;
+//play_screen.interactive = false;
 
 credit_screen.visible = false;
 credit_screen.interactive = false; 
@@ -73,78 +100,7 @@ end_screen.addChild(scoredisplay);
 
 //*********************************************************************************
 //play screen stuffs 
-var score1 = 0;
-var scoreboard = new PIXI.Text("Score:" + score1);
-scoreboard.position.x = 280;
-scoreboard.position.y = 0;
-play_screen.addChild(scoreboard);
-
-
-var times = 60;
-var time = new PIXI.Text("Time:" + times);
-time.position.x = 280;
-time.position.y = 30;
-play_screen.addChild(time);
-
-
-var sprite1 = new PIXI.Sprite(texture1);
-sprite1.anchor.x = 0.5;
-sprite1.anchor.y = 0.5;
-sprite1.position.x = 200;
-sprite1.position.y = 200;
-play_screen.addChild(sprite1);
-
-var sprite2 = new PIXI.Sprite(texture2);
-sprite2.anchor.x = 0.5;
-sprite2.anchor.y = 0.5;
-sprite2.position.x = 120;
-sprite2.position.y = 120;
-play_screen.addChild(sprite2);
-
-var sprite3 = new PIXI.Sprite(texture3);
-sprite3.anchor.x = 0.5;
-sprite3.anchor.y = 0.5;
-sprite3.position.x = 280;
-sprite3.position.y = 280;
-play_screen.addChild(sprite3);
-
-
-function mouseHandler4(e) {
-    //sprite1.position.x = sprite1.position.x + 100;
-    //sprite1.position.y = sprite1.position.y + 100;
-    var new_x1 = Math.floor(Math.random() * 300) + 100;
-    var new_y1 = Math.floor(Math.random() * 300) + 100;
-    createjs.Tween.get(sprite1.position).to({x: new_x1, y: new_y1}, 1000, 
-    createjs.Ease.bounceOut);
-    score1++;
-    scoreboard.setText("Score:" + score1);
-}
-
-function mouseHandler5(e) {
-    var new_x2 = Math.floor(Math.random() * 300) + 100;
-    var new_y2 = Math.floor(Math.random() * 300) + 100;
-    createjs.Tween.get(sprite2.position).to({x: new_x2, y: new_y2}, 1000, 
-    createjs.Ease.bounceOut);
-    score1 -= 2 ;
-    scoreboard.setText("Score:" + score1);
-}
-
-function mouseHandler6(e) {
-    var new_x3 = Math.floor(Math.random() * 300) + 100;
-    var new_y3 = Math.floor(Math.random() * 300) + 100;
-    createjs.Tween.get(sprite3.position).to({x: new_x3, y: new_y3}, 1000, 
-    createjs.Ease.bounceOut);
-    score1++;
-    scoreboard.setText("Score:" + score1);
-}
-
-sprite1.interactive = true;
-sprite2.interactive = true;
-sprite3.interactive = true;
-sprite1.on('mousedown', mouseHandler4);
-sprite2.on('mousedown', mouseHandler5);
-sprite3.on('mousedown', mouseHandler6);
-
+ 
 
 
 //*********************************************************************
@@ -255,7 +211,7 @@ function animate() {
     var new_x3 = Math.floor(Math.random() * 300) + 100;
     var new_y3 = Math.floor(Math.random() * 300) + 100;
     createjs.Tween.get(sprite3.position).to({x: new_x3, y: new_y3}, 1000, 
-    createjs.Ease.bounceOut);
+    createjs.Ease.bounceOut); 
     renderer.render(stage);
 }
 
