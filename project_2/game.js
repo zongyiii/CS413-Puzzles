@@ -13,16 +13,23 @@ PIXI.loader
   .load(ready);
 
 var music;
+
+function MouseHandler(e){
+    music.play();
+} 
   
 function ready() {
-    music = PIXI.audioManager.getAudio("coin.mp3");
-    music.play();
+    music = PIXI.audioManager.getAudio("Yisound.mp3");
+    
     var black = new PIXI.Sprite(PIXI.Texture.fromFrame("blackface.png"));
     black.scale.x = 2;
     black.scale.y = 2;
     black.position.x = 150;
     black.position.y = 100;
     stage.addChild(black);
+    black.interactive = true;
+    black.on('mousedown',MouseHandler);
+    
     
     var frames = [];
     frames.push(PIXI.Texture.fromFrame("cheeryellowface.png"));
@@ -107,13 +114,21 @@ stage.visible = true;
 
 
 //end screen stuffs
-var scoredisplay = new PIXI.Text("Thanks for Playing.")
-scoredisplay.position.x = 100;
-scoredisplay.position.y = 200;
+var scoredisplay = new PIXI.Text("Thanks for Playing.");
+scoredisplay.position.x = 160;
+scoredisplay.position.y = 160;
 end_screen.addChild(scoredisplay);
 
+//credits screen stuffs
+var arthor = new PIXI.Text("Arthor:\nYi Zong");
+arthor.position.x = 130;
+arthor.position.y = 30;
+credit_screen.addChild(arthor);
 
-
+var tools = new PIXI.Text("Tools:\nTexturePacker\nFetch\nfreac\nAseprite\nBosca Ceoil");
+tools.position.x = 130;
+tools.position.y = 120;
+credit_screen.addChild(tools);
 
 //*********************************************************************************
 //play screen stuffs 
@@ -126,11 +141,11 @@ EndgameButton.interactive = false;
 EndgameButton.on('mousedown', changeView.bind(null, end_screen));
 
 
-var score = 0;
-var scoreboard = new PIXI.Text("Score:" + score);
-scoreboard.position.x = 280;
-scoreboard.position.y = 0;
-play_screen.addChild(scoreboard);
+var score1 = 0;
+var scoreboard1 = new PIXI.Text("Score:" + score1);
+scoreboard1.position.x = 280;
+scoreboard1.position.y = 0;
+play_screen.addChild(scoreboard1);
 
 
 var times = 60;
@@ -140,64 +155,64 @@ time.position.y = 30;
 play_screen.addChild(time);
 
 
-var sprite1 = new PIXI.Sprite(texture1);
-sprite1.anchor.x = 0.5;
-sprite1.anchor.y = 0.5;
-sprite1.position.x = 200;
-sprite1.position.y = 200;
-play_screen.addChild(sprite1);
+var sprite4 = new PIXI.Sprite(texture1);
+sprite4.anchor.x = 0.5;
+sprite4.anchor.y = 0.5;
+sprite4.position.x = 200;
+sprite4.position.y = 200;
+play_screen.addChild(sprite4);
 
-var sprite2 = new PIXI.Sprite(texture2);
-sprite2.anchor.x = 0.5;
-sprite2.anchor.y = 0.5;
-sprite2.position.x = 120;
-sprite2.position.y = 120;
-play_screen.addChild(sprite2);
+var sprite5 = new PIXI.Sprite(texture2);
+sprite5.anchor.x = 0.5;
+sprite5.anchor.y = 0.5;
+sprite5.position.x = 120;
+sprite5.position.y = 120;
+play_screen.addChild(sprite5);
 
-var sprite3 = new PIXI.Sprite(texture3);
-sprite3.anchor.x = 0.5;
-sprite3.anchor.y = 0.5;
-sprite3.position.x = 280;
-sprite3.position.y = 280;
-play_screen.addChild(sprite3);
+var sprite6 = new PIXI.Sprite(texture3);
+sprite6.anchor.x = 0.5;
+sprite6.anchor.y = 0.5;
+sprite6.position.x = 280;
+sprite6.position.y = 280;
+play_screen.addChild(sprite6);
 
 
 
-function mouseHandler1(e) {
+function mouseHandler4(e) {
     //sprite1.position.x = sprite1.position.x + 100;
     //sprite1.position.y = sprite1.position.y + 100;
     var new_x1 = Math.floor(Math.random() * 300) + 100;
     var new_y1 = Math.floor(Math.random() * 300) + 100;
-    createjs.Tween.get(sprite1.position).to({x: new_x1, y: new_y1}, 1000, 
+    createjs.Tween.get(sprite4.position).to({x: new_x1, y: new_y1}, 1000, 
     createjs.Ease.bounceOut);
-    score++;
-    scoreboard.setText("Score:" + score);
+    score1++;
+    scoreboard1.setText("Score:" + score1);
 }
 
-function mouseHandler2(e) {
+function mouseHandler5(e) {
     var new_x2 = Math.floor(Math.random() * 300) + 100;
     var new_y2 = Math.floor(Math.random() * 300) + 100;
-    createjs.Tween.get(sprite2.position).to({x: new_x2, y: new_y2}, 1000, 
+    createjs.Tween.get(sprite5.position).to({x: new_x2, y: new_y2}, 1000, 
     createjs.Ease.bounceOut);
-    score -= 2 ;
-    scoreboard.setText("Score:" + score);
+    score1 -= 2 ;
+    scoreboard1.setText("Score:" + score1);
 }
 
-function mouseHandler3(e) {
+function mouseHandler6(e) {
     var new_x3 = Math.floor(Math.random() * 300) + 100;
     var new_y3 = Math.floor(Math.random() * 300) + 100;
-    createjs.Tween.get(sprite3.position).to({x: new_x3, y: new_y3}, 1000, 
+    createjs.Tween.get(sprite6.position).to({x: new_x3, y: new_y3}, 1000, 
     createjs.Ease.bounceOut);
-    score++;
-    scoreboard.setText("Score:" + score);
+    score1++;
+    scoreboard1.setText("Score:" + score1);
 }
 
-sprite1.interactive = true;
-sprite2.interactive = true;
-sprite3.interactive = true;
-sprite1.on('mousedown', mouseHandler1);
-sprite2.on('mousedown', mouseHandler2);
-sprite3.on('mousedown', mouseHandler3);
+sprite4.interactive = true;
+sprite5.interactive = true;
+sprite6.interactive = true;
+sprite4.on('mousedown', mouseHandler4);
+sprite5.on('mousedown', mouseHandler5);
+sprite6.on('mousedown', mouseHandler6);
 
 
 //*********************************************************************
@@ -317,6 +332,10 @@ function animate() {
     var new_y3 = Math.floor(Math.random() * 300) + 100;
     createjs.Tween.get(sprite3.position).to({x: new_x3, y: new_y3}, 1000, 
     createjs.Ease.bounceOut); 
+    sprite4.rotation += 0.1;
+    sprite5.rotation += 0.15;
+    sprite6.rotation += 0.05
+    
     renderer.render(stage);
 }
 
